@@ -1,0 +1,44 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'start' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.6
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle audio_features_spotify@1.0.0~prestart: audio_features_spotify@1.0.0
+6 silly lifecycle audio_features_spotify@1.0.0~prestart: no script for prestart, continuing
+7 info lifecycle audio_features_spotify@1.0.0~start: audio_features_spotify@1.0.0
+8 verbose lifecycle audio_features_spotify@1.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle audio_features_spotify@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/andrew/git/AUDIO_FEATURES_SPOTIFY/node_modules/.bin:/home/andrew/jython2.7.0/Lib:/home/andrew/anaconda2/jre/lib/amd64:/home/andrew/anaconda2/jre/lib/amd64:/home/andrew/anaconda2/jre/lib:/home/andrew/anaconda2/bin/lib/python.2.7/site-packages:/home/andrew/anaconda2/bin:/home/andrew/bin:/home/andrew/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle audio_features_spotify@1.0.0~start: CWD: /home/andrew/git/AUDIO_FEATURES_SPOTIFY
+11 silly lifecycle audio_features_spotify@1.0.0~start: Args: [ '-c', 'budo main.js' ]
+12 info lifecycle audio_features_spotify@1.0.0~start: Failed to exec start script
+13 verbose stack Error: audio_features_spotify@1.0.0 start: `budo main.js`
+13 verbose stack spawn ENOENT
+13 verbose stack     at ChildProcess.<anonymous> (/usr/share/npm/lib/utils/spawn.js:17:16)
+13 verbose stack     at emitTwo (events.js:87:13)
+13 verbose stack     at ChildProcess.emit (events.js:172:7)
+13 verbose stack     at maybeClose (internal/child_process.js:821:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+14 verbose pkgid audio_features_spotify@1.0.0
+15 verbose cwd /home/andrew/git/AUDIO_FEATURES_SPOTIFY
+16 error Linux 4.8.0-37-generic
+17 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+18 error node v4.2.6
+19 error npm  v3.5.2
+20 error file sh
+21 error code ELIFECYCLE
+22 error errno ENOENT
+23 error syscall spawn
+24 error audio_features_spotify@1.0.0 start: `budo main.js`
+24 error spawn ENOENT
+25 error Failed at the audio_features_spotify@1.0.0 start script 'budo main.js'.
+25 error Make sure you have the latest version of node.js and npm installed.
+25 error If you do, this is most likely a problem with the audio_features_spotify package,
+25 error not with npm itself.
+25 error Tell the author that this fails on your system:
+25 error     budo main.js
+25 error You can get information on how to open an issue for this project with:
+25 error     npm bugs audio_features_spotify
+25 error Or if that isn't available, you can get their info via:
+25 error     npm owner ls audio_features_spotify
+25 error There is likely additional logging output above.
+26 verbose exit [ 1, true ]
