@@ -238,7 +238,12 @@ let template = [{
 	  if (reopenMenuItem) reopenMenuItem.enabled = true
 	})
 	
-
+	
+	
+	
+	
+	
+	
 app.on('ready', function(){
 	mainWindow = new BrowserWindow({width: 1024, height: 768});
 	mainWindow.loadURL(url.format({
@@ -248,4 +253,11 @@ app.on('ready', function(){
 	}));
 	
 });
+	
+	
+
+	
+	
+	
+	
 

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
-
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="../css/font.css">
-	<style>
-	body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-	.w3-sidenav a {padding:20px}
-	</style>
-	
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/font.css">
+		<script type="text/javascript" src="../scripts/myscript.js"></script>
+		
+		<style>
+		body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+		.w3-sidenav a {padding:20px}
+		</style>
+	</head>
 	<body> 
-	 
-		<nav class="w3-sidenav w3-card-2 w3-top w3-xlarge w3-animate-left w3-black" style="opacity: 1.0; display:none;z-index:2;width:40%;min-width:300px;" id="mySidenav">
+	 	
+	 	
+		<nav class="w3-sidenav w3-card-2 w3-top w3-xlarge w3-animate-left " style="background-color:rgba(0,0,0,0.8);color: white; display:none;z-index:2;width:40%;min-width:300px;" id="mySidenav">
 		  <a href="javascript:void(0)" onclick="w3_close()"
 		  class="w3-closenav">Close Menu</a>
 		  <a href="about.html" onclick="w3_close()">About</a>
@@ -33,15 +36,14 @@
 		<!-- !PAGE CONTENT! -->
 		<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 			<div class="w3-row-padding w3-padding-16 w3-center" id="articles">
-		
-		
+				<div class=" w3-col" style="background-color:rgba(0,0,0,0.8);color:white">
+					
+					<p><button id = "button" type="button" value="submit" onclick="openFile();" >Click Me!</button></p>
+					
+				</div>
 			</div>
 		</div>
-	
-	
-	
-	
-	
+		
 		<script>
 		// Script to open and close sidenav
 		function w3_open() {
