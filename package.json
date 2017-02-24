@@ -4,7 +4,7 @@
   "description": "Application for set audio features (cover, artist etc...) with Spotify API",
   "main": "main.js",
   "scripts": {
-  	"start": "electron .",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/andreaangiolillo/AUDIO_FEATURES_SPOTIFY/issues"
   },
-  "homepage": "https://github.com/andreaangiolillo/AUDIO_FEATURES_SPOTIFY#readme"
+  "homepage": "https://github.com/andreaangiolillo/AUDIO_FEATURES_SPOTIFY#readme",
+  "dependencies": {
+    "ffmetadata": "^1.4.0",
+    "jsmediatags": "^3.4.0"
+  }
 }
