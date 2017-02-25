@@ -1,33 +1,8 @@
+var nodeID3 = require('node-id3');
 var fs = require('fs');
 const {dialog} = require('electron').remote;
 var request = require('request');
 var $ = require('jquery');
-var ffmetadata = require('ffmetadata')
-
-
-
-
-	
-
-//function saveFile(url) {
-//	$.ajax({
-//        url: url,
-//        success: function (response) {
-//        	
-//        }
-//     });
-//}
-
-
-function writeMetadata(fileName, data){
-	
-	ffmetadata.write(fileName, data, function(err) {
-	    if (err) console.error("Error writing metadata", err);
-	    else console.log("Data written");
-	});
-	
-}
-
 
 
 
@@ -45,7 +20,7 @@ var track_spotify = function (query, fileName) {
         	var id = object[0].id;
         	var title = object[0].name;
         	var album_title = object[0].album.name;
-        	var album_cover = object[0].album.images[0].url;
+        	var album_cover = object[0].album.images[1].url;
         	var artist_name = object[0].artists[0].name;
         	console.log(title + " "+ album_title + " " + album_cover + " " + artist_name);
         
@@ -57,22 +32,23 @@ var track_spotify = function (query, fileName) {
         
         	        
 
-        	request(album_cover).pipe(fs.createWriteStream(__dirname + 'cover.jpg'));
+        	request(album_cover).pipe(fs.createWriteStream(__dirname + 'cover.png'));
         	
-        	console.log(__dirname +" ALALALALALALALAL");
-        	var options = {
-        			attachments:[__dirname + 'cover.jpg'],// ["/home/lucky/background/35HgtBp.jpg"],
-        			 'id3v2.3' : true
-        	};
+        	var tags = {
+        			  title: title,
+        			  artist: artist_name,
+        			  album: album_title,
+        			  image: album_cover
+        			}
+        	nodeID3.removeTags(fileName);
+        	var success = nodeID3.write(tags, fileName);
+        	 
+        	//returns true if written correctly
+        	console.log(success);
         	
-        	ffmetadata.write(fileName, {}, options, function(err) {
-        	    if (err) console.error("Error writing cover art" + err);
-        	    else console.log("Cover art added");
-        	});
-//        	//saveFile(album_cover);	
-        	//writeMetadata(fileName,data, options);		
         	
         	
+
         	
         }
     });
@@ -91,17 +67,8 @@ function openFile () {
 		if (fileNames === undefined) return;
 		var fileName = fileNames[0];
 		console.log(fileName);
-		ffmetadata.read(fileName, function(err,data) {
-		    if (err) console.log(err);
-		    else console.log(data);
-		});
 		
-		//function for communicate with spotify
-		var data = {
-				album:"NONE"
-		};
-		
-
+		//espressione regolare sbagliata!!
 		title = fileName.substring(fileName.search(/[a-zA-Z s è é ò à _ . ,]+.mp3/), fileName.length -4);
 		console.log(title);
 		track_spotify(title, fileName);
