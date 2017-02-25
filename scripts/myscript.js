@@ -1,42 +1,22 @@
 var fs = require('fs');
 const {dialog} = require('electron').remote;
 
-var $ = require("jquery");
-//var jsmediatags = require("jsmediatags");
-
+var $ = require('jquery');
 var ffmetadata = require('ffmetadata')
 
 
 
 
 	
-// Download a file form a url.
+
 //function saveFile(url) {
-//  // Get file name from url.
-//  var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
-//  var xhr = new XMLHttpRequest();
-//  xhr.responseType = 'blob';
-//  
-//  xhr.onload = function() {
-//    var a = document.createElement('a');
-//    a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
-//    console.log(a.href);
-//    a.download = 'cover'; // Set the file name.
-//    console.log(a.download);
-//    a.style.display = 'none';
-//
-//    document.body.appendChild(a);
-//    a.click();
-//
-//    delete a;
-//  };
-//  xhr.open('GET', url);
-//  xhr.send();
-//  
+//	$.ajax({
+//        url: url,
+//        success: function (response) {
+//        	
+//        }
+//     });
 //}
-
-
-
 
 
 function writeMetadata(fileName, data){
@@ -76,9 +56,14 @@ var track_spotify = function (query, fileName) {
         	};
         	
         	var options = {
-      			  attachments: album_cover,
+        			attachments:[album_cover],// ["/home/lucky/background/35HgtBp.jpg"],
+        			 'id3v2.3' : true
         	};
-      	
+        	
+        	ffmetadata.write(fileName, {}, options, function(err) {
+        	    if (err) console.error("Error writing cover art" + err);
+        	    else console.log("Cover art added");
+        	});
         	//saveFile(album_cover);	
         	//writeMetadata(fileName,data, options);		
         	

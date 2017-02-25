@@ -19,6 +19,7 @@
   "homepage": "https://github.com/andreaangiolillo/AUDIO_FEATURES_SPOTIFY#readme",
   "dependencies": {
     "ffmetadata": "^1.4.0",
+    "handlebars": "^4.0.6",
     "jsmediatags": "^3.4.0"
   }
 }
