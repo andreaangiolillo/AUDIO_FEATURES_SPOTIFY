@@ -1,6 +1,6 @@
 var fs = require('fs');
 const {dialog} = require('electron').remote;
-
+var request = require('request');
 var $ = require('jquery');
 var ffmetadata = require('ffmetadata')
 
@@ -54,9 +54,14 @@ var track_spotify = function (query, fileName) {
         			artist: artist_name,
         			title: title	
         	};
+        
+        	        
+
+        	request(album_cover).pipe(fs.createWriteStream(__dirname + 'cover.jpg'));
         	
+        	console.log(__dirname +" ALALALALALALALAL");
         	var options = {
-        			attachments:[album_cover],// ["/home/lucky/background/35HgtBp.jpg"],
+        			attachments:[__dirname + 'cover.jpg'],// ["/home/lucky/background/35HgtBp.jpg"],
         			 'id3v2.3' : true
         	};
         	
@@ -64,7 +69,7 @@ var track_spotify = function (query, fileName) {
         	    if (err) console.error("Error writing cover art" + err);
         	    else console.log("Cover art added");
         	});
-        	//saveFile(album_cover);	
+//        	//saveFile(album_cover);	
         	//writeMetadata(fileName,data, options);		
         	
         	
