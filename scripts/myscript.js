@@ -72,7 +72,6 @@ function openFile () {
 		title = fileName.substring(fileName.search(/[a-zA-Z s è é ò à _ . ,]+.mp3/), fileName.length -4);
 		console.log(title);
 		track_spotify(title, fileName);
-		//writeMetadata(fileName,data);
 	
 
 		

@@ -349,6 +349,38 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
 .w3-hover:hover{ opacity: 0.5;}
 body{background-image:url("../images/background.png")}
-  
+#button{
+	color: #fff;
+    border: 2px solid #fff;
+    background: 0 0;
+    border-radius: 500px;
+    font-size: 14px;
+    padding: 6px 35px;
+    position:absolute;
+    top:400px;
+    left: 43%;
+    border-color: #2EBD59;
+    background-color: #2EBD59;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#contenitor{
+	color: #fff;
+    border: 2px solid #fff;
+    background: 0 0;
+    border-radius: 50px;
+    font-size: 18px;
+    padding: 6px 35px;
+    position: absolute;
+    top: 100px;
+    left: 25%;
+    width: 50%;
+    font-weight: bold;
+    margin: 0 auto;
+	border-color: #2EBD59;
+ 	text-align: justify;
+}
 
 
