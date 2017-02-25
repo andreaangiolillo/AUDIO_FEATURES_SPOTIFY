@@ -1,5 +1,5 @@
 /* W3.CSS 2.88 Jan 2017 by Jan Egil and Borge Refsnes */
-html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+html{box-sizing:border-box}*,*:before,*:after{box-sizing:content-box}
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}
@@ -366,7 +366,7 @@ body{background-image:url("../images/background.png")}
     cursor: pointer;
 }
 
-#contenitor{
+#contenitor,#contenitor1{
 	color: #fff;
     border: 2px solid #fff;
     background: 0 0;
@@ -382,5 +382,24 @@ body{background-image:url("../images/background.png")}
 	border-color: #2EBD59;
  	text-align: justify;
 }
-
+#cover{
+	padding-top: 5%;
+    padding-bottom: 5%;
+}
+img{
+	width: 196px;
+    height: 161px;
+    border-radius: 66px;
+}
+#input{
+	border-radius: 11px;
+    margin-top: 20%;
+    padding: 2%;
+}
+#label{
+	float: left;
+    padding-top: 0px;
+    margin-top: 23%;
+    margin-right: 5%;
+}
 

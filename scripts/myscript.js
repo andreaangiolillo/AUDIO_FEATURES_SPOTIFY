@@ -3,7 +3,7 @@ var fs = require('fs');
 const {dialog} = require('electron').remote;
 var request = require('request');
 var $ = require('jquery');
-
+var handlebars = require('handlebars');
 
 
 var track_spotify = function (query, fileName) {
@@ -57,24 +57,41 @@ var track_spotify = function (query, fileName) {
 
 
 
+function initializateDiv(fileName){
+	
+	var div_cover = '<div id="file" class="w3-col"><div id="cover" class="w3-half"><img src="{{image}}" alt="cover" "></div><div class="w3-half"><label id = "label" for="male">Title</label><input type="text" id ="input" name="title" value={{title}}>  </div></div>';
+	var template = handlebars.compile(div_cover);
+	var data = template({image: "no_cover.jpg", title: fileName});
+
+	document.getElementById("contenitor1").innerHTML += data;
+	document.getElementById("contenitor1").style.visibility = "visible";
+}
+
 
 
 
 function openFile () {
-
+	
+	
 	dialog.showOpenDialog(function (fileNames) {
 
 		if (fileNames === undefined) return;
 		var fileName = fileNames[0];
+		
+		
+		
 		console.log(fileName);
 		
 		//espressione regolare sbagliata!!
 		title = fileName.substring(fileName.search(/[a-zA-Z s è é ò à _ . ,]+.mp3/), fileName.length -4);
 		console.log(title);
+		initializateDiv(title);
 		track_spotify(title, fileName);
 	
 
-		
+		var element = document.getElementById("contenitor");
+		element.outerHTML = "";
+		delete element;
 	}); 
 
 }
