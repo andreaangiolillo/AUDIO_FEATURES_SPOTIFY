@@ -57,14 +57,14 @@ var track_spotify = function (query, fileName) {
 
 
 
-function initializateDiv(fileName){
+function initializateDiv(fileName, id){
 	
-	var div_cover = '<div id="file" class="w3-col"><div id="cover" class="w3-half"><img src="{{image}}" alt="cover" "></div><div class="w3-half"><label id = "label" for="male">Title</label><input type="text" id ="input" name="title" value={{title}}>  </div></div>';
+	var div_cover = '<div id ='+id+' class=" contenitor">	<div id="cover" style="display: inline-block;"><img src="{{image}}" alt="cover" "></div><div id ="label_name" style ="display: inline-block;"><label id = "label" for="male">Title</label><input type="text" id ="input" name="title" value={{title}}></div></div>';
 	var template = handlebars.compile(div_cover);
 	var data = template({image: "no_cover.jpg", title: fileName});
-
-	document.getElementById("contenitor1").innerHTML += data;
-	document.getElementById("contenitor1").style.visibility = "visible";
+//
+	document.getElementById("box").innerHTML += data;
+//	document.getElementById("contenitor1").style.visibility = "visible";
 }
 
 
@@ -73,23 +73,41 @@ function initializateDiv(fileName){
 function openFile () {
 	
 	
-	dialog.showOpenDialog(function (fileNames) {
+	dialog.showOpenDialog({properties: [ 'multiSelections']}, function (fileNames) {
 
 		if (fileNames === undefined) return;
-		var fileName = fileNames[0];
+		//var fileName = fileNames[0];
+		
+
+		for (var i = 0; i < fileNames.length; i++) {
+		    // Iterate over numeric indexes from 0 to 5, as everyone expects.
+		    console.log(fileNames[i]);
+			title = fileNames[i].substring(fileNames[i].search(/[a-zA-Z s è é ò à _ . ,]+.mp3/), fileNames[i].length -4);
+			console.log(title);
+			initializateDiv(title, "id_"+i);
+		    
+		}
 		
 		
 		
-		console.log(fileName);
 		
-		//espressione regolare sbagliata!!
-		title = fileName.substring(fileName.search(/[a-zA-Z s è é ò à _ . ,]+.mp3/), fileName.length -4);
-		console.log(title);
-		initializateDiv(title);
-		track_spotify(title, fileName);
+		
+		
+//		console.log(fileName);
+//		
+//		//espressione regolare sbagliata!!
+//		title = fileName.substring(fileName.search(/[a-zA-Z s è é ò à _ . ,]+.mp3/), fileName.length -4);
+//		console.log(title);
+//		initializateDiv(title);
+//		
+//		track_spotify(title, fileName);
 	
 
 		var element = document.getElementById("contenitor");
+		element.outerHTML = "";	
+		delete element;
+	
+		var element = document.getElementById("button");
 		element.outerHTML = "";
 		delete element;
 	}); 

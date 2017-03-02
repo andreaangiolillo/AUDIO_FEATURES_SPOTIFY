@@ -356,9 +356,7 @@ body{background-image:url("../images/background.png")}
     border-radius: 500px;
     font-size: 14px;
     padding: 6px 35px;
-    position:absolute;
-    top:400px;
-    left: 43%;
+    position:relative;
     border-color: #2EBD59;
     background-color: #2EBD59;
     text-transform: uppercase;
@@ -366,40 +364,42 @@ body{background-image:url("../images/background.png")}
     cursor: pointer;
 }
 
-#contenitor,#contenitor1{
+#contenitor,.contenitor{
 	color: #fff;
     border: 2px solid #fff;
     background: 0 0;
     border-radius: 50px;
     font-size: 18px;
     padding: 6px 35px;
-    position: absolute;
-    top: 100px;
-    left: 25%;
     width: 50%;
     font-weight: bold;
     margin: 0 auto;
+   	margin-top: 3%;
 	border-color: #2EBD59;
  	text-align: justify;
+ 	display: inline-block;
 }
 #cover{
 	padding-top: 5%;
     padding-bottom: 5%;
 }
 img{
-	width: 196px;
-    height: 161px;
+	width: 163px;
+    height: 140px;
     border-radius: 66px;
 }
 #input{
-	border-radius: 11px;
-    margin-top: 20%;
-    padding: 2%;
+    border-radius: 15px;
+    border: solid 1px black;
+    text-align: center;
+    margin-left: 15px;
 }
-#label{
+#cover{
+	float: left
+}
+#label_name{
 	float: left;
-    padding-top: 0px;
-    margin-top: 23%;
-    margin-right: 5%;
+    margin-left: 10%;
+    margin-top: 12%;
 }
 
