@@ -6,7 +6,48 @@ var $ = require('jquery');
 var handlebars = require('handlebars');
 
 
-var track_spotify = function (query, fileName) {
+
+
+
+
+function initializateDiv_err(fileName, id){
+	
+	var div_cover = '<div id ='+id+' class=" contenitor">	<div id="cover" style="display: inline-block;"><img src="{{image}}" alt="cover" "></div><div id ="label_name" style ="display: inline-block;"><label id = "label" for="male">Title</label><input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{title}}></div></div>';
+	var template = handlebars.compile(div_cover);
+	var data = template({image: "no_cover.jpg", title: fileName});
+
+	document.getElementById("box").innerHTML += data;
+
+}
+
+
+function initializateDiv(title, artist_name, album_title, album_cover, id ){
+	
+	var div_cover = '<div id ='+id+' class=" contenitor">	<div id="cover" style="display: inline-block;">'+
+	'<img src="{{image}}" alt="cover" "></div>'+
+	'<div id ="label_name" style ="display: inline-block;">'+
+	'<label id = "label" for="male">Title</label>'+
+	'<input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{title}}>'+
+	'<label id = "label" for="male">Artist</label>'+
+	'<input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{artist}}>'+
+	'<label id = "label" for="male">Album</label>'+
+	'<input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{album}}>'+
+	'</div></div>';
+	var template = handlebars.compile(div_cover);
+	var data = template({image: album_cover, title: title, artist:artist_name, album: album_title});
+
+	document.getElementById("box").innerHTML += data;
+
+}
+
+
+
+
+
+
+
+
+var track_spotify = function (query, fileName, i) {
     $.ajax({
         url: 'https://api.spotify.com/v1/search',
         data: {
@@ -32,7 +73,7 @@ var track_spotify = function (query, fileName) {
         
         	        
 
-        	request(album_cover).pipe(fs.createWriteStream(__dirname + 'cover.png'));
+        	//request(album_cover).pipe(fs.createWriteStream(__dirname + 'cover.png'));
         	
         	var tags = {
         			  title: title,
@@ -46,10 +87,18 @@ var track_spotify = function (query, fileName) {
         	//returns true if written correctly
         	console.log(success);
         	
-        	
+        	if (success == true){
+        		initializateDiv(title, artist_name, album_title, album_cover, i)
+        		
+        	}else{
+        		initializateDiv_err(query, i);
+        	}
         	
 
         	
+        },
+        error: function(response){
+        	initializateDiv_err(query, i);	
         }
     });
 };
@@ -57,15 +106,6 @@ var track_spotify = function (query, fileName) {
 
 
 
-function initializateDiv(fileName, id){
-	
-	var div_cover = '<div id ='+id+' class=" contenitor">	<div id="cover" style="display: inline-block;"><img src="{{image}}" alt="cover" "></div><div id ="label_name" style ="display: inline-block;"><label id = "label" for="male">Title</label><input type="text" id ="input" name="title" value={{title}}></div></div>';
-	var template = handlebars.compile(div_cover);
-	var data = template({image: "no_cover.jpg", title: fileName});
-//
-	document.getElementById("box").innerHTML += data;
-//	document.getElementById("contenitor1").style.visibility = "visible";
-}
 
 
 
@@ -84,7 +124,8 @@ function openFile () {
 		    console.log(fileNames[i]);
 			title = fileNames[i].substring(fileNames[i].search(/[a-zA-Z s è é ò à _ . ,]+.mp3/), fileNames[i].length -4);
 			console.log(title);
-			initializateDiv(title, "id_"+i);
+			track_spotify(title, fileNames[i], "id_"+i);
+			//initializateDiv(title, "id_"+i);
 		    
 		}
 		
@@ -113,6 +154,8 @@ function openFile () {
 	}); 
 
 }
+
+
 
 
 

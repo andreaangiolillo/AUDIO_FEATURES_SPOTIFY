@@ -403,3 +403,10 @@ img{
     margin-top: 12%;
 }
 
+#tooltip{
+	position: absolute;
+    display: none;
+    background: #ccc;
+    border: 1px solid;
+}
+
