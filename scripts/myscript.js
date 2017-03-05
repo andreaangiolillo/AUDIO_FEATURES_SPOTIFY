@@ -27,15 +27,15 @@ function initializateDiv(title, artist_name, album_title, album_cover, id ){
 	'<img src="{{image}}" alt="cover" "></div>'+
 	'<div id ="label_name" style ="display: inline-block;">'+
 	'<label id = "label" for="male">Title</label>'+
-	'<input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{title}}>'+
-	'<label id = "label" for="male">Artist</label>'+
-	'<input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{artist}}>'+
-	'<label id = "label" for="male">Album</label>'+
-	'<input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{album}}>'+
+	'<input type=text id =input data-tooltip=#tooltip style = margin-left:34px name=title value="{{title}}">'+
+	'<br><label id = "label" for="male">Artist</label>'+
+	'<input type="text" id ="input" data-tooltip="#tooltip" style = "margin-left:23px" name="title" value="{{artist}}">'+
+	'<br><label id = "label" for="male">Album</label>'+
+	'<input type="text" id ="input" data-tooltip="#tooltip" name="title" value="{{album}}">'+
 	'</div></div>';
 	var template = handlebars.compile(div_cover);
 	var data = template({image: album_cover, title: title, artist:artist_name, album: album_title});
-
+	console.log(title +" " +  artist_name +" " + album_title +" " + album_cover +" " + id + "FFFFF")
 	document.getElementById("box").innerHTML += data;
 
 }
@@ -88,6 +88,7 @@ var track_spotify = function (query, fileName, i) {
         	console.log(success);
         	
         	if (success == true){
+        		console.log(title +" " +  artist_name +" " + album_title +" " + album_cover +" " + i + "FFFFF")
         		initializateDiv(title, artist_name, album_title, album_cover, i)
         		
         	}else{

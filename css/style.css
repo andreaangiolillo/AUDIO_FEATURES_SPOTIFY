@@ -386,7 +386,7 @@ body{background-image:url("../images/background.png")}
 img{
 	width: 163px;
     height: 140px;
-    border-radius: 66px;
+    border-radius: 70%;
 }
 #input{
     border-radius: 15px;
