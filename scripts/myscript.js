@@ -131,8 +131,12 @@ function openFile () {
 		}
 		
 		
-		
-		
+		$(document).ready(function(){
+		    $("#box").css({"border-radius": "0px 100px 100px"}); 
+		    $("#b1").css({"visibility": "visible"}); 
+		    $("#b2").css({"visibility": "visible"}); 
+		    
+		});
 		
 		
 //		console.log(fileName);
@@ -144,7 +148,8 @@ function openFile () {
 //		
 //		track_spotify(title, fileName);
 	
-
+		var box =  document.getElementById("box");
+		
 		var element = document.getElementById("contenitor");
 		element.outerHTML = "";	
 		delete element;
