@@ -6,18 +6,20 @@ var $ = require('jquery');
 var handlebars = require('handlebars');
 
 
-
+var song = [];
+var song_not_found = [];
 
 
 
 function initializateDiv_err(fileName, id){
 	
-	var div_cover = '<div id ='+id+' class=" contenitor">	<div id="cover" style="display: inline-block;"><img src="{{image}}" alt="cover" "></div><div id ="label_name" style ="display: inline-block;"><label id = "label" for="male">Title</label><input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{title}}></div></div>';
+	var div_cover = '<div id ='+id+' class=" contenitor" style="border-color: #000000">	<div id="cover" style="display: inline-block;"><img src="{{image}}" alt="cover" "></div><div id ="label_name" style ="display: inline-block;"><label id = "label" for="male">Title</label><input type="text" id ="input" data-tooltip="#tooltip" name="title" value={{title}}></div></div>';
 	var template = handlebars.compile(div_cover);
 	var data = template({image: "no_cover.jpg", title: fileName});
-
-	document.getElementById("box").innerHTML += data;
-
+	song_not_found.push(data)
+	//document.getElementById("box").innerHTML += data;
+	console.log(song_not_found.length);
+	
 }
 
 
@@ -36,6 +38,8 @@ function initializateDiv(title, artist_name, album_title, album_cover, id ){
 	var template = handlebars.compile(div_cover);
 	var data = template({image: album_cover, title: title, artist:artist_name, album: album_title});
 	console.log(title +" " +  artist_name +" " + album_title +" " + album_cover +" " + id + "FFFFF")
+	song.push(data);
+	console.log(song.length);
 	document.getElementById("box").innerHTML += data;
 
 }
@@ -107,8 +111,41 @@ var track_spotify = function (query, fileName, i) {
 
 
 
+function showSong(){
+	
+	$(document).ready(function(){
+	    $("#box").empty();
+	});	
+	
+	song.forEach(function(data) {
+	    console.log(data);
+	    
+	    $(document).ready(function(){
+	    	$("#box").css({"background-color":"rgba(0,0,0,0.9)"}); 
+		    $("#box").append(data);
+		});	
+	   
+	});
+	
+}
 
-
+function showSongNotFound(){
+	
+	$(document).ready(function(){
+	    $("#box").empty();
+	});	
+	
+	song_not_found.forEach(function(data) {
+	    console.log(data);
+	    
+	    $(document).ready(function(){
+	    	$("#box").css({"background-color":"rgba(46,189,89,0.9)"}); 
+		    $("#box").append(data);
+		});	
+	   
+	});
+	
+}
 
 
 function openFile () {
